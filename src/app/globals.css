@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --surface: #0d0d0d;
+  --surface-2: #151515;
+  --border: rgba(255, 255, 255, 0.07);
+  --foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.5);
+  --accent: #0099ff;
+  --accent-strong: #0099ff;
+  --accent-subtle: #151515;
+  --sheet: #e6e6e6;
+  --sheet-foreground: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-sheet: var(--sheet);
+  --color-sheet-foreground: var(--sheet-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(0, 153, 255, 0.35);
+  color: #fff;
+}
+
+.display {
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.hairline {
+  border-color: var(--border);
+}
+
+/* Word-by-word blur reveal (midu style) */
+.reveal-word {
+  display: inline-block;
+  opacity: 0.001;
+  filter: blur(4px);
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, filter, transform;
+}
+
+.reveal.is-visible .reveal-word {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.reveal-up {
+  opacity: 0.001;
+  filter: blur(4px);
+  transform: translateY(60px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, filter, transform;
+}
+
+.reveal.is-visible .reveal-up {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-word,
+  .reveal-up {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Gradient wordmark (hero + footer) — orange wave ripple */
+.wordmark-gradient {
+  background-image:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.95) 8%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.75) 30%,
+      rgba(255, 255, 255, 0) 42%,
+      rgba(255, 255, 255, 0.9) 54%,
+      rgba(255, 255, 255, 0) 66%,
+      rgba(255, 255, 255, 0.7) 78%,
+      rgba(255, 255, 255, 0) 90%,
+      rgba(255, 255, 255, 0.85) 98%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      115deg,
+      #ff7a18 0%,
+      #ffe8c2 14%,
+      #ff9f1c 26%,
+      #f97316 38%,
+      #e63946 52%,
+      #fff1dd 64%,
+      #ff7a18 78%,
+      #ffb347 100%
+    );
+  background-size:
+    200% 200%,
+    300% 300%;
+  background-position:
+    0% 50%,
+    0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: wordmarkWave 6s ease-in-out infinite alternate;
+}
+
+@keyframes wordmarkWave {
+  0% {
+    background-position:
+      0% 40%,
+      0% 60%;
+  }
+  100% {
+    background-position:
+      100% 60%,
+      100% 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-gradient {
+    animation: none;
+    background-position:
+      0% 50%,
+      0% 50%;
+  }
+}
+
+/* Ticker edge fade */
+.edge-fade {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  animation: ticker 30s linear infinite;
+}
+
+/* Exit-confirm modal: slow float + blur on card hover */
+@keyframes exitFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  50% {
+    transform: translateY(-7px);
+    filter: blur(2.5px);
+  }
+}
+
+.exit-card:hover .exit-btn {
+  animation: exitFloat 3s ease-in-out infinite;
+}
+
+.exit-card:hover .exit-btn:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.exit-card .exit-btn:hover {
+  animation: none;
+  filter: blur(0);
+  transform: none;
 }

@@ -1,0 +1,22 @@
+{
+  "testimonials": [
+    {
+      "quote": "[Add a short client or colleague quote about your work, reliability, or communication.]",
+      "name": "[Name]",
+      "role": "[Role]",
+      "company": "[Company]"
+    },
+    {
+      "quote": "[Add a second quote — ideally about problem-solving, delivery, or technical skill.]",
+      "name": "[Name]",
+      "role": "[Role]",
+      "company": "[Company]"
+    },
+    {
+      "quote": "[Add a third quote — collaboration, support experience, or project outcome.]",
+      "name": "[Name]",
+      "role": "[Role]",
+      "company": "[Company]"
+    }
+  ]
+}

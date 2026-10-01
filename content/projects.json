@@ -1,0 +1,99 @@
+{
+  "projects": [
+    {
+      "slug": "luxury-recipe-finder",
+      "title": "Luxury Recipe Finder",
+      "category": "Full-stack",
+      "summary": "Premium recipe discovery platform with curated collections and smart search.",
+      "problem": "Home cooks wanted a refined way to discover high-quality recipes without cluttered ads and noisy interfaces.",
+      "approach": "Built a Laravel API with React frontend, focusing on clean search, curated collections, and a calm reading experience for recipes.",
+      "result": "A polished full-stack product demonstrating API design, relational data modeling, and modern frontend architecture.",
+      "role": "Full-stack Developer",
+      "tech": ["Laravel", "React", "MySQL", "REST API"],
+      "highlights": [
+        "Smart search with filters and collections",
+        "RESTful API with authentication",
+        "Responsive, content-first UI"
+      ],
+      "links": {
+        "live": "",
+        "github": ""
+      },
+      "image": "/projects/luxury-recipe.png",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "slug": "personal-finance",
+      "title": "Nexus — Personal Finance",
+      "category": "Full-stack",
+      "summary": "Personal finance platform with biometric WebAuthn login, budgets, AI coaching, and admin dashboards.",
+      "problem": "Financial apps rely on passwords that are weak for sensitive data, while most trackers lack budgets, insights, and a polished experience.",
+      "approach": "Built a Laravel API with Laragear WebAuthn for passwordless fingerprint/face login, plus a React + TypeScript frontend featuring dashboards, budget alerts, transaction management, multi-currency support, and an AI finance coach.",
+      "result": "A secure, production-style finance product combining modern passkey authentication, email OTP verification, role-based admin tools, and rich data visualizations.",
+      "role": "Full-stack Developer",
+      "tech": ["Laravel", "React", "TypeScript", "WebAuthn", "Tailwind CSS"],
+      "highlights": [
+        "Biometric/passkey login via WebAuthn (Laragear)",
+        "Budgets with limit-check jobs and transaction receipts",
+        "AI chatbot finance coach + analytics charts (Recharts)",
+        "Admin dashboard with roles and email OTP verification",
+        "Multi-currency and locale-aware UI"
+      ],
+      "links": {
+        "live": "https://nexus-frontend-tau-three.vercel.app",
+        "github": "https://github.com/ZinMinHtet22/Personal-Finance-"
+      },
+      "image": "/projects/nexus.png",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "slug": "asmr-video-platform",
+      "title": "ASMR Video Platform",
+      "category": "Web",
+      "summary": "Curated ASMR video experience powered by the YouTube Data API.",
+      "problem": "Finding quality ASMR content on YouTube means algorithmic noise, autoplay chains, and distracting UI.",
+      "approach": "Built a Next.js app that pulls from the YouTube Data API, organizes videos into calm collections, and presents them in a minimal distraction-free player UI.",
+      "result": "A fast, focused media experience demonstrating third-party API integration, data caching, and intentional UX design.",
+      "role": "Frontend Developer",
+      "tech": ["Next.js", "YouTube API", "Tailwind CSS", "TypeScript"],
+      "highlights": [
+        "YouTube Data API integration",
+        "Curated categories and calm player UI",
+        "ISR/caching for performance"
+      ],
+      "links": {
+        "live": "",
+        "github": ""
+      },
+      "featured": true,
+      "order": 4
+    },
+    {
+      "slug": "final-year-project",
+      "title": "Vellum — Smart Recipe & AI Culinary Assistant",
+      "category": "Academic",
+      "summary": "Bachelor's capstone: a full kitchen-management platform with AI chef assistant, smart pantry, budget planning, and admin command center.",
+      "problem": "Home cooks juggle recipes, pantry stock, meal plans, and grocery budgets across disconnected tools — with no intelligent help when deciding what to cook.",
+      "approach": "Built a React + Vite frontend and Laravel 11 REST API with MySQL, integrating the Google Gemini API for ChefBot (AI cooking assistant), plus smart pantry suggestions, multi-currency budget planning, analytics charts, role-based admin moderation, and Sanctum token auth.",
+      "result": "A comprehensive, production-style full-stack application deployed live, covering community recipe moderation, AI integration, analytics, and secure authentication end-to-end.",
+      "role": "Full-stack Developer (Final Year)",
+      "tech": ["React", "Laravel", "MySQL", "Google Gemini API", "Tailwind CSS"],
+      "highlights": [
+        "ChefBot AI assistant powered by Google Gemini API",
+        "Smart pantry with recipe suggestions from stock",
+        "Shopping list with multi-currency budget planner",
+        "Admin command center: user roles, recipe moderation, analytics",
+        "Laravel Sanctum token auth + community recipe approval flow"
+      ],
+      "links": {
+        "live": "https://vellum-frontend-three.vercel.app",
+        "github": "https://github.com/ZinMinHtet22/final_Year_Project"
+      },
+      "image": "/projects/vellum.png",
+      "featured": true,
+      "order": 1
+    }
+  ]
+}
