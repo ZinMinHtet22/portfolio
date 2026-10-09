@@ -12,25 +12,26 @@ export const metadata: Metadata = {
 
 const education = [
   {
-    degree: "Bachelor's Degree",
-    school: "[University name]",
-    years: "[Years]",
-    detail: "[Focus / major, if relevant]",
+    degree: "BSc (Hons) Computer Science",
+    school: "University of Roehampton (via Lithan Academy)",
+    years: "2024 – Present",
+    detail: "Top-up degree through the eduCLaaS work-study pathway",
   },
   {
-    degree: "Diploma",
-    school: "[Institute name]",
-    years: "[Years]",
-    detail: "[Focus / major, if relevant]",
+    degree: "Pearson BTEC Level 3 Foundation Diploma — IT",
+    school: "Lithan Academy",
+    years: "2024",
+    detail: "Grade Pass · Merit in Website Development",
   },
 ];
 
 const experience = [
   {
-    role: "Technical Support",
-    company: "[Company name]",
-    years: "[Years]",
+    role: "Technology Associate",
+    company: "Lithan Academy Pte Ltd",
+    years: "2024 – Present",
     bullets: [
+      "Support IT operations across the Business Operations - IT department",
       "Troubleshot hardware, software, and network issues for end users",
       "Communicated technical solutions clearly to non-technical customers",
       "Documented recurring issues and improved internal knowledge base",

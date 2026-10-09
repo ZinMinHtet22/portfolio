@@ -13,14 +13,14 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Replace with your Formspree endpoint, e.g.
-    // const res = await fetch("https://formspree.io/f/xxxxxxx", {
     setStatus("loading");
     try {
-      // Demo mode: no endpoint configured yet — simulate success.
-      // When ready, POST formData to Formspree/Netlify and check res.ok.
-      await new Promise((r) => setTimeout(r, 600));
-      if (!formData.get("email")) throw new Error("email required");
+      const res = await fetch("https://formspree.io/f/xljgbzgd", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error("send failed");
       setStatus("success");
       form.reset();
     } catch {
@@ -116,7 +116,7 @@ export function ContactForm() {
       </Button>
 
       <p className="text-xs text-white/40">
-        Demo form — connect Formspree/Netlify Forms for production delivery.
+        Powered by Formspree — your details go straight to my inbox.
       </p>
     </form>
   );

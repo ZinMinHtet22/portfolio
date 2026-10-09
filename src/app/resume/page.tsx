@@ -22,7 +22,7 @@ export default function ResumePage() {
               Download my CV
             </h3>
             <p className="mt-1.5 text-sm text-white/50">
-              PDF · updated [date] · ideal for HR departments
+              PDF · updated October 2026 · ideal for HR departments
             </p>
           </div>
           <a
@@ -48,12 +48,7 @@ export default function ResumePage() {
           />
         </div>
         <p className="mt-3 text-sm text-white/40">
-          If the preview doesn&apos;t load, use the download button above. Place
-          your file at{" "}
-          <code className="rounded-lg bg-white/5 px-2 py-1 text-xs text-white/70">
-            public/resume.pdf
-          </code>
-          .
+          If the preview doesn&apos;t load, use the download button above.
         </p>
       </div>
 
@@ -64,10 +59,10 @@ export default function ResumePage() {
             Summary
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-white/60">
-            Full-stack developer with a technical support background and a
-            calm, product-minded approach to building web applications.
-            Experienced with Laravel, React, Next.js, Node.js, PostgreSQL, and
-            modern AI-augmented development workflows.
+            Full-stack developer and Technology Associate with a background in
+            technical support and a calm, product-minded approach to building
+            web applications. Experienced with Laravel, React, Next.js,
+            Node.js, PostgreSQL, and modern AI-augmented development workflows.
           </p>
         </section>
 
@@ -76,8 +71,14 @@ export default function ResumePage() {
             Education
           </h2>
           <ul className="mt-4 space-y-2 text-sm text-white/60">
-            <li>Bachelor&apos;s Degree — [University], [Years]</li>
-            <li>Diploma — [Institute], [Years]</li>
+            <li>
+              BSc (Hons) Computer Science — University of Roehampton (via
+              Lithan Academy), 2024 – Present
+            </li>
+            <li>
+              Pearson BTEC Level 3 Foundation Diploma (IT) — Lithan Academy,
+              2024 · Grade Pass
+            </li>
           </ul>
         </section>
 
@@ -86,7 +87,9 @@ export default function ResumePage() {
             Experience
           </h2>
           <ul className="mt-4 space-y-2 text-sm text-white/60">
-            <li>Technical Support — [Company], [Years]</li>
+            <li>
+              Technology Associate — Lithan Academy Pte Ltd, 2024 – Present
+            </li>
           </ul>
         </section>
       </div>

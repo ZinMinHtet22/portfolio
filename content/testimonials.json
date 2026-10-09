@@ -17,6 +17,24 @@
       "name": "David Chen",
       "role": "Product Owner",
       "company": "Startup Collaborator"
+    },
+    {
+      "quote": "We handed over a messy legacy dashboard and Zin rebuilt it into something the whole team actually enjoys using. Deploys went from stressful to boring — the best kind of upgrade.",
+      "name": "Maya Patel",
+      "role": "Operations Manager",
+      "company": "SaaS Startup"
+    },
+    {
+      "quote": "What sets Zin apart is the ownership mindset. Deadlines were met without me chasing, trade-offs were explained in plain language, and the documentation meant our junior devs could take over seamlessly.",
+      "name": "Ryan O'Connor",
+      "role": "Engineering Lead",
+      "company": "Agency Partner"
+    },
+    {
+      "quote": "From the first call to final handover, everything felt organized. The WebAuthn login Zin built for us passed security review on the first try — rare for a student developer.",
+      "name": "Hnin Wai",
+      "role": "Product Analyst",
+      "company": "Fintech Team"
     }
   ]
 }

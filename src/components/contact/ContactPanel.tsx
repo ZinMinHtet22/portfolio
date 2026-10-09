@@ -16,7 +16,9 @@ export function ContactPanel() {
   const [selectedBuilds, setSelectedBuilds] = useState<string[]>([]);
   const [budget, setBudget] = useState("");
   const [details, setDetails] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
   useEffect(() => {
     const onOpen = () => {
@@ -58,9 +60,24 @@ export function ContactPanel() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
-    // Demo mode — wire up Formspree/Netlify endpoint for delivery.
-    await new Promise((r) => setTimeout(r, 700));
-    setStatus("sent");
+    try {
+      const res = await fetch("https://formspree.io/f/xljgbzgd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          type,
+          builds: selectedBuilds.join(", "),
+          budget,
+          details,
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
   const inputClass =
@@ -228,6 +245,12 @@ export function ContactPanel() {
                   className={cn(inputClass, "mt-3 resize-none")}
                 />
               </div>
+
+              {status === "error" ? (
+                <p className="text-sm text-red-400">
+                  Something went wrong. Please try again or email me directly.
+                </p>
+              ) : null}
 
               <button
                 type="submit"
