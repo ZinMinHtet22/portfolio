@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -97,11 +97,26 @@ export function ServicesSection() {
     setImgIndex(0);
   };
 
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [pill, setPill] = useState<{ left: number; top: number; w: number; h: number } | null>(null);
+
   useEffect(() => {
     if (openIndex === null) return;
-    const bar = document.getElementById("service-tabs");
-    const activeTab = bar?.querySelector<HTMLButtonElement>(`[data-idx="${openIndex}"]`);
-    activeTab?.scrollIntoView({ block: "nearest", inline: "center" });
+    const measure = () => {
+      const track = trackRef.current;
+      const tab = track?.querySelector<HTMLButtonElement>(`[data-idx="${openIndex}"]`);
+      if (!track || !tab) return;
+      setPill({ left: tab.offsetLeft, top: tab.offsetTop, w: tab.offsetWidth, h: tab.offsetHeight });
+    };
+    measure();
+    const tab = trackRef.current?.querySelector<HTMLButtonElement>(`[data-idx="${openIndex}"]`);
+    tab?.scrollIntoView({ block: "nearest", inline: "center" });
+    const t = setTimeout(measure, 350);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
   }, [openIndex]);
 
   return (
@@ -149,24 +164,44 @@ export function ServicesSection() {
           <div className="relative flex max-h-full w-full max-w-5xl flex-col items-center gap-3 overflow-y-auto sm:gap-5">
             <div
               id="service-tabs"
-              className="flex max-w-full gap-1 self-stretch overflow-x-auto rounded-full bg-white/80 p-1.5 shadow-lg backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:justify-center md:self-auto md:overflow-visible"
+              className="max-w-full self-stretch overflow-x-auto rounded-full bg-black/85 p-1.5 shadow-lg [scrollbar-width:none] md:self-auto md:overflow-x-visible [&::-webkit-scrollbar]:hidden"
             >
-              {services.map((s, i) => (
-                <button
-                  key={s.title}
-                  type="button"
-                  data-idx={i}
-                  onClick={() => openService(i)}
-                  className={cn(
-                    "shrink-0 whitespace-nowrap rounded-full px-3 py-2 text-xs font-medium transition-colors duration-200 sm:px-4 sm:text-sm",
-                    i === openIndex
-                      ? "bg-white text-black shadow"
-                      : "text-black/50 hover:text-black",
-                  )}
-                >
-                  {s.title}
-                </button>
-              ))}
+              <div
+                ref={trackRef}
+                className="relative flex min-w-max gap-1 md:min-w-0 md:flex-wrap md:justify-center"
+              >
+                {pill ? (
+                  <span
+                    aria-hidden
+                    className="absolute rounded-full bg-white shadow-[0_2px_12px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out"
+                    style={{ left: pill.left, top: pill.top, width: pill.w, height: pill.h }}
+                  />
+                ) : null}
+                {services.map((s, i) => (
+                  <button
+                    key={s.title}
+                    type="button"
+                    data-idx={i}
+                    onClick={() => openService(i)}
+                    className={cn(
+                      "relative z-10 flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-xs font-medium transition-colors duration-200 sm:px-4 sm:text-sm",
+                      i === openIndex
+                        ? "text-black"
+                        : "text-white/55 hover:text-white",
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "text-[10px] font-semibold tracking-[0.08em] transition-colors duration-200",
+                        i === openIndex ? "text-black/40" : "text-white/35",
+                      )}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {s.title}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="relative w-full overflow-hidden rounded-[24px] bg-[#e6e6e6] p-2.5 shadow-2xl sm:rounded-[36px] sm:p-3 md:rounded-[40px] md:p-4">

@@ -49,24 +49,26 @@
       "order": 3
     },
     {
-      "slug": "asmr-video-platform",
-      "title": "ASMR Video Platform",
-      "category": "Web",
-      "summary": "Curated ASMR video experience powered by the YouTube Data API.",
-      "problem": "Finding quality ASMR content on YouTube means algorithmic noise, autoplay chains, and distracting UI.",
-      "approach": "Built a Next.js app that pulls from the YouTube Data API, organizes videos into calm collections, and presents them in a minimal distraction-free player UI.",
-      "result": "A fast, focused media experience demonstrating third-party API integration, data caching, and intentional UX design.",
+      "slug": "mise-en-box",
+      "title": "Mise en Box",
+      "category": "Frontend",
+      "summary": "Weekly meal-kit e-commerce platform with recipes, planner, cart, and a luxury dark mode.",
+      "problem": "Meal-kit customers juggle recipes, shopping lists, and pantry stock across disconnected sites, with no single place to plan the week or check out.",
+      "approach": "Built a React 19 + TypeScript SPA with Vite and React Router covering recipe discovery, weekly meal planner, gift boxes, pantry stock, and a slide-out cart backed by context state.",
+      "result": "A polished, fully responsive storefront demonstrating SPA architecture, state management, and premium dark-mode UI design.",
       "role": "Frontend Developer",
-      "tech": ["Next.js", "YouTube API", "Tailwind CSS", "TypeScript"],
+      "tech": ["React", "TypeScript", "Vite", "React Router", "Tailwind CSS"],
       "highlights": [
-        "YouTube Data API integration",
-        "Curated categories and calm player UI",
-        "ISR/caching for performance"
+        "Recipe catalog with detail pages and curated collections",
+        "Weekly meal planner and cart drawer with context state",
+        "Product, pantry, gift box, and app-download pages",
+        "Luxury dark theme with responsive mobile nav"
       ],
       "links": {
         "live": "",
-        "github": ""
+        "github": "https://github.com/ZinMinHtet22/mise-en-box"
       },
+      "image": "/projects/mise-en-box.png",
       "featured": true,
       "order": 4
     },

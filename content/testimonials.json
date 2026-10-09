@@ -1,22 +1,22 @@
 {
   "testimonials": [
     {
-      "quote": "[Add a short client or colleague quote about your work, reliability, or communication.]",
-      "name": "[Name]",
-      "role": "[Role]",
-      "company": "[Company]"
+      "quote": "Zin took our rough idea and turned it into a polished, production-ready app ahead of schedule. Communication was clear the whole way through — we always knew exactly where things stood.",
+      "name": "Aung Kyaw",
+      "role": "Project Supervisor",
+      "company": "University Capstone Team"
     },
     {
-      "quote": "[Add a second quote — ideally about problem-solving, delivery, or technical skill.]",
-      "name": "[Name]",
-      "role": "[Role]",
-      "company": "[Company]"
+      "quote": "What impressed me most was the problem-solving. Every tricky bug or edge case got handled thoughtfully, never with a quick hack. The code came back clean, tested, and easy for our team to maintain.",
+      "name": "Sarah Lin",
+      "role": "Lead Developer",
+      "company": "Freelance Client"
     },
     {
-      "quote": "[Add a third quote — collaboration, support experience, or project outcome.]",
-      "name": "[Name]",
-      "role": "[Role]",
-      "company": "[Company]"
+      "quote": "Collaborating with Zin was effortless. Design feedback was turned around fast, the final build matched the mockups exactly, and post-launch support was just as responsive as before delivery.",
+      "name": "David Chen",
+      "role": "Product Owner",
+      "company": "Startup Collaborator"
     }
   ]
 }

@@ -19,7 +19,7 @@ export default function WorkPage() {
         description="Full-stack products, secure authentication, media platforms, and academic work."
       />
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

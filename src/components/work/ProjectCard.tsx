@@ -11,8 +11,8 @@ const gradients: Record<string, string> = {
     "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #a855f7 100%)",
   "personal-finance":
     "linear-gradient(135deg, #059669 0%, #0891b2 55%, #1d4ed8 100%)",
-  "asmr-video-platform":
-    "linear-gradient(135deg, #7c3aed 0%, #2563eb 55%, #0ea5e9 100%)",
+  "mise-en-box":
+    "linear-gradient(135deg, #ea580c 0%, #b45309 55%, #1c1917 100%)",
 };
 
 const fallback =

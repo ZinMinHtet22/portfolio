@@ -10,7 +10,7 @@
   --accent: #0099ff;
   --accent-strong: #0099ff;
   --accent-subtle: #151515;
-  --sheet: #e6e6e6;
+  --sheet: #d4d4d4;
   --sheet-foreground: #000000;
 }
 
@@ -211,4 +211,69 @@ body {
   animation: none;
   filter: blur(0);
   transform: none;
+}
+
+/* Process canvas: flowing connection lines + gentle card float */
+@property --pc-a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.pc-border {
+  animation: pcSpin 5s linear infinite;
+}
+
+@keyframes pcSpin {
+  to {
+    --pc-a: 360deg;
+  }
+}
+
+.process-flow {
+  stroke-dasharray: 4 9;
+  animation: flow 1.6s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+
+.card-float {
+  animation: cardFloat 5.5s ease-in-out infinite;
+}
+
+.pc-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-flow,
+  .card-float,
+  .pc-border,
+  .pc-twinkle {
+    animation: none;
+  }
 }

@@ -8,6 +8,7 @@ import { getFeaturedProjects, getTestimonials } from "@/lib/data";
 import { Parallax } from "@/components/ui/Parallax";
 import { FaqSection } from "@/components/home/FaqSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { ProcessCanvas } from "@/components/home/ProcessCanvas";
 
 const toolIcons = [
   { name: "TypeScript", file: "typescript", color: "#3178C6" },
@@ -59,7 +60,7 @@ const coloredIcons = new Set([
 ]);
 
 export default function Home() {
-  const featured = getFeaturedProjects();
+  const featured = getFeaturedProjects().slice(0, 3);
   const testimonials = getTestimonials().slice(0, 3);
 
   return (
@@ -124,13 +125,20 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((project, i) => (
             <Reveal key={project.slug} delay={i * 100}>
               <ProjectCard project={project} />
             </Reveal>
           ))}
         </div>
+      </section>
+      </Parallax>
+
+      {/* Process canvas */}
+      <Parallax distance={140}>
+      <section className="px-5 pt-40 md:px-10">
+        <ProcessCanvas />
       </section>
       </Parallax>
 
