@@ -11,7 +11,7 @@ from generate_intake_doc import (  # noqa: E402
     table, bullets,
 )
 
-OUT = Path(r"D:\Documents\Projects\Portfolio\Documents") / "Intake-Chatbot-Work-Report.docx"
+OUT = Path(r"D:\Documents\Projects\Portfolio\Documents") / "Portfolio_Intake-Chatbot-Work-Report.docx"
 
 
 def build():
@@ -245,7 +245,7 @@ def build():
     table(doc, ["Item", "Detail"], [
         ["Date", "24 November 2026"],
         ["Site", "https://jeffery-portfolio.pages.dev/contact"],
-        ["Test email", "ryuuprime25@gmail.com"],
+        ["Test email", "owner-test@example.com"],
         ["Answers", "Clearly marked TEST web-app booking brief with timeline and budget chips"],
         ["Result", "Success screen: “Thanks — your brief is on its way.” plus Download my brief (.md)"],
         ["Formspree", "Owner confirmed test email arrived in inbox"],
