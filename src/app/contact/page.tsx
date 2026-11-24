@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactTrigger } from "@/components/contact/ContactTrigger";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -27,14 +28,29 @@ const channels = [
 
 export default function ContactPage() {
   return (
-    <div className="px-5 pt-36 md:px-10 md:pt-44">
+    <div className="px-5 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pt-36">
       <SectionHeading
         eyebrow="Contact"
         title="Let's work together."
         description="Open to freelance projects, collaborations, and full-time opportunities. Drop a message and I'll reply as soon as I can."
       />
 
-      <div className="grid gap-8 lg:grid-cols-5">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-border bg-surface p-6 md:p-7">
+        <div>
+          <p className="text-sm font-medium text-white">
+            Prefer a guided walk-through? Answer 8 quick questions.
+          </p>
+          <p className="mt-1 text-sm text-white/50">
+            I&apos;ll compile your answers into a tidy project brief — takes about two
+            minutes, and you get a copy too.
+          </p>
+        </div>
+        <ContactTrigger mode="intake" className="shrink-0">
+          Start a project intake
+        </ContactTrigger>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
         <div className="lg:col-span-3">
           <div className="rounded-3xl border border-border bg-surface p-7 md:p-9">
             <ContactForm />

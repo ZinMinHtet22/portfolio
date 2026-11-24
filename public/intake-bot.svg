@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Portfolio intake bot avatar">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="68%">
+      <stop offset="0%" stop-color="#14283a"/>
+      <stop offset="100%" stop-color="#0b0d10"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <!-- speech bubble -->
+  <path d="M168 110h176a64 64 0 0 1 64 64v104a64 64 0 0 1-64 64H232l-66 58v-58h-4a64 64 0 0 1-64-64V174a64 64 0 0 1 64-64z" fill="#0099ff"/>
+
+  <!-- monogram -->
+  <text x="256" y="268" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="176" font-weight="800" text-anchor="middle" letter-spacing="-6">Z</text>
+
+  <!-- brief card -->
+  <rect x="304" y="292" width="128" height="146" rx="22" fill="#141414" stroke="#0099ff" stroke-width="8"/>
+  <rect x="326" y="322" width="84" height="11" rx="5.5" fill="#ffffff"/>
+  <rect x="326" y="352" width="84" height="11" rx="5.5" fill="#ffffff" opacity="0.75"/>
+  <rect x="326" y="382" width="54" height="11" rx="5.5" fill="#ffffff" opacity="0.5"/>
+</svg>

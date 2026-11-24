@@ -12,14 +12,14 @@ export default function TestimonialsPage() {
   const testimonials = getTestimonials();
 
   return (
-    <div className="px-5 pt-36 md:px-10 md:pt-44">
+    <div className="px-5 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pt-36">
       <SectionHeading
         eyebrow="Testimonials"
         title="Kind words from collaborators."
         description="Feedback from clients, teammates, and people I've worked with."
       />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {testimonials.map((t, i) => (
           <Reveal key={i} delay={(i % 3) * 100} className="h-full">
             <figure className="flex h-full flex-col rounded-3xl bg-white/5 p-8 backdrop-blur-[5px]">

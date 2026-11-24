@@ -2,14 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { IntakeChat } from "@/components/contact/IntakeChat";
 
 const types = ["Project based", "Full-time role"] as const;
 const builds = ["Website", "Web App", "Mobile App", "API / Backend", "Other"];
 const budgets = ["3-5k", "5-10k", "10k+", "Other"];
 
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const MAILTO =
+  "mailto:jefferyyas8@gmail.com?subject=Portfolio%20project%20inquiry";
+
 export function ContactPanel() {
   const [open, setOpen] = useState(false);
   const [confirmClose, setConfirmClose] = useState(false);
+  const [mode, setMode] = useState<"message" | "intake">("message");
   const [type, setType] = useState<(typeof types)[number]>("Project based");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,9 +27,11 @@ export function ContactPanel() {
   );
 
   useEffect(() => {
-    const onOpen = () => {
+    const onOpen = (e: Event) => {
       setOpen(true);
       setConfirmClose(false);
+      const m = (e as CustomEvent<{ mode?: string }>).detail?.mode;
+      if (m === "intake" || m === "message") setMode(m);
     };
     window.addEventListener("open-contact", onOpen);
     return () => window.removeEventListener("open-contact", onOpen);
@@ -59,9 +67,10 @@ export function ContactPanel() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!FORMSPREE_ID) return;
     setStatus("sending");
     try {
-      const res = await fetch("https://formspree.io/f/xljgbzgd", {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
@@ -131,7 +140,61 @@ export function ContactPanel() {
             Let&apos;s build something good together.
           </h2>
 
-          {status === "sent" ? (
+          {/* Mode switch: Message (existing form) | Project intake */}
+          <div
+            role="tablist"
+            aria-label="Contact mode"
+            className="mt-6 inline-flex rounded-full bg-white/5 p-1"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mode === "message"}
+              onClick={() => setMode("message")}
+              className={cn(
+                "rounded-full px-5 py-2 text-sm transition-all duration-200",
+                mode === "message"
+                  ? "bg-white text-black"
+                  : "text-white/50 hover:text-white",
+              )}
+            >
+              Message
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={mode === "intake"}
+              onClick={() => setMode("intake")}
+              className={cn(
+                "rounded-full px-5 py-2 text-sm transition-all duration-200",
+                mode === "intake"
+                  ? "bg-white text-black"
+                  : "text-white/50 hover:text-white",
+              )}
+            >
+              Project intake
+            </button>
+          </div>
+
+          {mode === "intake" ? (
+            <IntakeChat onSwitchToMessage={() => setMode("message")} />
+          ) : !FORMSPREE_ID ? (
+            <div className="mt-10 rounded-3xl bg-white/5 p-8">
+              <p className="text-lg font-medium text-white">Contact form not configured yet.</p>
+              <p className="mt-2 text-sm text-white/50">
+                Email me directly and I’ll reply as soon as I can.
+              </p>
+              <a
+                href={MAILTO}
+                className="mt-5 inline-flex h-12 items-center justify-center rounded-[20px] bg-white px-5 text-[15px] font-medium text-[#030303] transition-transform hover:scale-[1.01]"
+              >
+                Email jefferyyas8@gmail.com
+              </a>
+              <p className="mt-4 text-xs text-white/40">
+                Set NEXT_PUBLIC_FORMSPREE_ID in .env.local to enable submissions from this panel.
+              </p>
+            </div>
+          ) : status === "sent" ? (
             <div className="mt-10 rounded-3xl bg-white/5 p-8">
               <p className="text-lg font-medium text-white">Message sent.</p>
               <p className="mt-2 text-sm text-white/50">
@@ -179,7 +242,7 @@ export function ContactPanel() {
               {/* Personal info */}
               <div>
                 <p className="text-sm text-white/50">Personal info</p>
-                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <input
                     className={inputClass}
                     placeholder="Your name"
@@ -248,7 +311,11 @@ export function ContactPanel() {
 
               {status === "error" ? (
                 <p className="text-sm text-red-400">
-                  Something went wrong. Please try again or email me directly.
+                  Something went wrong. Please try again or{" "}
+                  <a className="underline" href={MAILTO}>
+                    email me directly
+                  </a>
+                  .
                 </p>
               ) : null}
 
@@ -263,7 +330,7 @@ export function ContactPanel() {
               <p className="text-center text-xs text-white/40">
                 Or email{" "}
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=jefferyyas8@gmail.com"
+                  href={MAILTO}
                   className="text-accent underline underline-offset-4"
                 >
                   jefferyyas8@gmail.com
@@ -275,13 +342,11 @@ export function ContactPanel() {
         </div>
       </aside>
 
-      {/* Exit confirm modal */}
+      {/* Exit confirm modal (unchanged) */}
       <div
         className={cn(
           "fixed inset-0 z-[80] flex items-center justify-center px-5 transition-opacity duration-200",
-          confirmClose
-            ? "opacity-100"
-            : "pointer-events-none opacity-0",
+          confirmClose ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         role="alertdialog"
         aria-label="Unsaved changes"

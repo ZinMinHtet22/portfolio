@@ -121,7 +121,7 @@ export function ServicesSection() {
 
   return (
     <>
-      <div className="mt-16 grid gap-8 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 md:grid-cols-2 lg:mt-20 lg:gap-8">
         {services.map((s, i) => (
           <div
             key={s.title}
@@ -214,7 +214,7 @@ export function ServicesSection() {
                 ✕
               </button>
 
-              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[16px] bg-neutral-200 sm:rounded-[24px] md:aspect-auto md:h-full md:min-h-[340px]">
                   <Image
                     src={active.images[imgIndex]}

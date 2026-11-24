@@ -19,7 +19,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="mt-40 px-5 pb-10 md:px-10">
+    <footer className="mt-14 px-5 pb-10 sm:mt-20 sm:px-8 lg:mt-28 lg:px-12">
       <div className="flex flex-col gap-10 md:flex-row md:justify-between">
         <div className="flex flex-col gap-6">
           <p className="flex items-center gap-2 text-sm text-white/50">

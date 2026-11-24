@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="px-5 pt-36 md:px-10 md:pt-44">
+    <div className="px-5 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pt-36">
       <SectionHeading
         eyebrow="Resume"
         title="Curriculum Vitae."
@@ -22,7 +22,7 @@ export default function ResumePage() {
               Download my CV
             </h3>
             <p className="mt-1.5 text-sm text-white/50">
-              PDF · updated October 2026 · ideal for HR departments
+              PDF · updated November 2026 · ideal for HR departments
             </p>
           </div>
           <a
@@ -53,7 +53,7 @@ export default function ResumePage() {
       </div>
 
       {/* Text summary for accessibility/SEO */}
-      <div className="mt-20 grid max-w-3xl gap-10 md:grid-cols-3">
+      <div className="mt-14 grid max-w-3xl grid-cols-1 gap-6 sm:mt-20 sm:grid-cols-2 lg:mt-28 lg:grid-cols-3 lg:gap-8">
         <section>
           <h2 className="text-xs uppercase tracking-widest text-white/40">
             Summary
@@ -73,7 +73,7 @@ export default function ResumePage() {
           <ul className="mt-4 space-y-2 text-sm text-white/60">
             <li>
               BSc (Hons) Computer Science — University of Roehampton (via
-              Lithan Academy), 2024 – Present
+              Lithan Academy), 2024 – 2025
             </li>
             <li>
               Pearson BTEC Level 3 Foundation Diploma (IT) — Lithan Academy,
@@ -88,7 +88,7 @@ export default function ResumePage() {
           </h2>
           <ul className="mt-4 space-y-2 text-sm text-white/60">
             <li>
-              Technology Associate — Lithan Academy Pte Ltd, 2024 – Present
+              Technology Associate — CLaaS2SaaS (Lithan Academy), June 2026 – Present
             </li>
           </ul>
         </section>

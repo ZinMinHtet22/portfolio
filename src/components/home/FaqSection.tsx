@@ -42,12 +42,12 @@ export function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="px-5 pt-40 md:px-10">
+    <section className="px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
       <h2 className="display max-w-[900px] text-[42px] text-white/60 md:text-[65px] xl:text-[82px]">
         Frequently asked questions.
       </h2>
 
-      <div className="mt-14 grid items-start gap-5 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 items-start gap-5 sm:mt-14 md:grid-cols-2 lg:mt-20 lg:gap-8">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (

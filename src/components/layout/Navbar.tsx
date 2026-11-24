@@ -40,7 +40,7 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="flex items-center justify-between px-5 py-5 md:px-10">
+      <div className="flex items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
         <Link
           href="/"
           className="text-lg font-medium tracking-[-0.03em] text-white"

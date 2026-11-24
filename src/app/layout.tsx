@@ -45,6 +45,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const cfToken = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN;
+
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
@@ -52,6 +54,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <ContactPanel />
+        {cfToken ? (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${cfToken}"}`}
+          />
+        ) : null}
       </body>
     </html>
   );

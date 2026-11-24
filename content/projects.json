@@ -1,76 +1,96 @@
 {
   "projects": [
     {
-      "slug": "luxury-recipe-finder",
-      "title": "Luxury Recipe Finder",
+      "slug": "retailpos",
+      "title": "RetailPOS",
       "category": "Full-stack",
-      "summary": "Premium recipe discovery platform with curated collections and smart search.",
-      "problem": "Home cooks wanted a refined way to discover high-quality recipes without cluttered ads and noisy interfaces.",
-      "approach": "Built a Laravel API with React frontend, focusing on clean search, curated collections, and a calm reading experience for recipes.",
-      "result": "A polished full-stack product demonstrating API design, relational data modeling, and modern frontend architecture.",
+      "summary": "Offline-first retail POS for fast checkout, inventory control, and multi-store operations.",
+      "problem": "Small retailers need reliable point-of-sale software that keeps selling during outages, enforces roles, and ties cash, stock, and reporting together without cloud dependency.",
+      "approach": "Built a FastAPI + SQLite backend with a React 19, Vite, and Tailwind frontend focused on speed at the counter and clear operational workflows for staff and managers.",
+      "whatIBuilt": "A fully offline retail POS (JavaScript/JSX frontend) with barcode checkout, inventory, refunds to original tender, hold/recall, customers with store credit and loyalty, suppliers and purchase orders, expenses and P&L, cash-drawer shifts with per-tender Z-report, multi-store stock, audit log, 2FA, server-side RBAC (Admin, Finance, Product Manager, Cashier), and full EN/MY i18n parity (854 keys). Completed improvements include a single-file backup/restore with typed confirmation and daily backups; KBZ Pay and Wave Pay tenders (exact-amount handling, receipt labels, Sales filter, refunds to original tender); inter-store stock transfers (Draft → Sent → Received/Cancelled, stock deducted on send, credited on receive, in-transit accounting, audit); stock-take sessions; a Reports page; LAN mode; and a drawer-kick toggle (default off).",
+      "result": "A production-style POS foundation that supports day-to-day retail operations, role-aware access, and bilingual staff workflows.",
+      "outcome": "Complete offline POS, verified by Vitest 11/11 and pytest 150/150, with a full QA pass in light and dark mode.",
       "role": "Full-stack Developer",
-      "tech": ["Laravel", "React", "MySQL", "REST API"],
+      "tech": [
+        "FastAPI",
+        "SQLite",
+        "React 19",
+        "Vite",
+        "Tailwind CSS"
+      ],
+      "stack": [
+        "FastAPI",
+        "SQLite",
+        "React 19",
+        "Vite",
+        "Tailwind CSS",
+        "JavaScript/JSX"
+      ],
       "highlights": [
-        "Smart search with filters and collections",
-        "RESTful API with authentication",
-        "Responsive, content-first UI"
+        "Barcode checkout, refunds to original tender, hold/recall, and shift-aware cash drawer flows with per-tender Z-report",
+        "Customers (store credit + loyalty), suppliers, purchase orders, expenses/P&L, multi-store stock, stock-take sessions, and Reports",
+        "KBZ Pay and Wave Pay tenders (exact amounts, receipt labels, Sales filters, refunds to original tender) plus LAN mode and optional drawer-kick (off by default)",
+        "Single-file backup/restore with typed confirmation and daily backups; inter-store transfers with in-transit accounting and audit; RBAC, 2FA, audit log, full EN/MY parity (854 keys)"
+      ],
+      "challenges": [
+        "Products table ACTIONS column clipped controls (was ~112px, actions needed ~192px); widened the column and used an opaque sticky header so actions stay usable while scrolling.",
+        "Sales totals showed floating-point artifacts (e.g. .190000000000005) because CountUp derived decimals from a raw float; fixed with a shared roundMoney/formatMoney utility and decimals set to 2.",
+        "A single-file SQLite database is a single point of failure; addressed with verified backup/restore plus daily snapshots (typed-confirm flow for restore).",
+        "Inter-store stock transfers must never double-count stock; implemented Draft → Sent → Received/Cancelled with stock deducted on send, credited on receive, explicit in-transit accounting, and audit entries."
       ],
       "links": {
         "live": "",
         "github": ""
       },
-      "image": "/projects/luxury-recipe.png",
       "featured": true,
-      "order": 2
+      "order": 0,
+      "year": "2025",
+      "image": "/projects/retailpos.webp",
+      "proofLine": "161 automated tests passing · fully offline",
+      "status": "local",
+      "imagePosition": "center top"
     },
     {
-      "slug": "personal-finance",
-      "title": "Nexus — Personal Finance",
-      "category": "Full-stack",
-      "summary": "Personal finance platform with biometric WebAuthn login, budgets, AI coaching, and admin dashboards.",
-      "problem": "Financial apps rely on passwords that are weak for sensitive data, while most trackers lack budgets, insights, and a polished experience.",
-      "approach": "Built a Laravel API with Laragear WebAuthn for passwordless fingerprint/face login, plus a React + TypeScript frontend featuring dashboards, budget alerts, transaction management, multi-currency support, and an AI finance coach.",
-      "result": "A secure, production-style finance product combining modern passkey authentication, email OTP verification, role-based admin tools, and rich data visualizations.",
-      "role": "Full-stack Developer",
-      "tech": ["Laravel", "React", "TypeScript", "WebAuthn", "Tailwind CSS"],
-      "highlights": [
-        "Biometric/passkey login via WebAuthn (Laragear)",
-        "Budgets with limit-check jobs and transaction receipts",
-        "AI chatbot finance coach + analytics charts (Recharts)",
-        "Admin dashboard with roles and email OTP verification",
-        "Multi-currency and locale-aware UI"
-      ],
-      "links": {
-        "live": "https://nexus-frontend-tau-three.vercel.app",
-        "github": "https://github.com/ZinMinHtet22/Personal-Finance-"
-      },
-      "image": "/projects/nexus.png",
-      "featured": true,
-      "order": 3
-    },
-    {
-      "slug": "mise-en-box",
-      "title": "Mise en Box",
+      "slug": "perfume-shop",
+      "title": "Perfume Shop",
       "category": "Frontend",
-      "summary": "Weekly meal-kit e-commerce platform with recipes, planner, cart, and a luxury dark mode.",
-      "problem": "Meal-kit customers juggle recipes, shopping lists, and pantry stock across disconnected sites, with no single place to plan the week or check out.",
-      "approach": "Built a React 19 + TypeScript SPA with Vite and React Router covering recipe discovery, weekly meal planner, gift boxes, pantry stock, and a slide-out cart backed by context state.",
-      "result": "A polished, fully responsive storefront demonstrating SPA architecture, state management, and premium dark-mode UI design.",
+      "summary": "Luxury e-commerce storefront for Myanmar delivery with a dark black-and-gold experience and bilingual copy.",
+      "problem": "Customers shopping premium fragrances in Myanmar needed a clear, trustworthy storefront with local delivery context and an experience that matches luxury branding.",
+      "approach": "Built a Next.js storefront with EN/MY language support, a dark black-and-gold visual system, and curated product presentation tailored to fragrance discovery.",
+      "whatIBuilt": "A Next.js e-commerce storefront for delivery across Myanmar (EN/MY), dark black + gold luxury design, tagline “Discover Your Signature Scent”, and a curated catalogue including Baccarat Rouge 540 (K 680,000) and Sauvage Elixir (K 245,000).",
+      "result": "A polished, conversion-minded storefront concept that pairs bilingual UX with a premium brand feel.",
+      "outcome": "Completed storefront build (EN/MY, Myanmar delivery focus, curated luxury catalogue).",
       "role": "Frontend Developer",
-      "tech": ["React", "TypeScript", "Vite", "React Router", "Tailwind CSS"],
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
       "highlights": [
-        "Recipe catalog with detail pages and curated collections",
-        "Weekly meal planner and cart drawer with context state",
-        "Product, pantry, gift box, and app-download pages",
-        "Luxury dark theme with responsive mobile nav"
+        "Dark black + gold luxury UI with “Discover Your Signature Scent” hero messaging",
+        "EN/MY experience for delivery across Myanmar",
+        "Curated catalogue (e.g. Baccarat Rouge 540 K 680,000, Sauvage Elixir K 245,000)"
+      ],
+      "challenges": [
+        "Hero headline rendered as “DiscoverYourSignatureScent” because the BlurText effect split text into flex spans and collapsed spaces; fixed with columnGap 0.28em and an aria-label for the full phrase, verified with clean lint/TypeScript and a production build."
       ],
       "links": {
         "live": "",
-        "github": "https://github.com/ZinMinHtet22/mise-en-box"
+        "github": ""
       },
-      "image": "/projects/mise-en-box.png",
       "featured": true,
-      "order": 4
+      "order": 0.5,
+      "year": "2025",
+      "image": "/projects/perfume-shop.webp",
+      "proofLine": "EN/MY bilingual · delivery across Myanmar",
+      "status": "local"
     },
     {
       "slug": "final-year-project",
@@ -81,7 +101,13 @@
       "approach": "Built a React + Vite frontend and Laravel 11 REST API with MySQL, integrating the Google Gemini API for ChefBot (AI cooking assistant), plus smart pantry suggestions, multi-currency budget planning, analytics charts, role-based admin moderation, and Sanctum token auth.",
       "result": "A comprehensive, production-style full-stack application deployed live, covering community recipe moderation, AI integration, analytics, and secure authentication end-to-end.",
       "role": "Full-stack Developer (Final Year)",
-      "tech": ["React", "Laravel", "MySQL", "Google Gemini API", "Tailwind CSS"],
+      "tech": [
+        "React",
+        "Laravel",
+        "MySQL",
+        "Google Gemini API",
+        "Tailwind CSS"
+      ],
       "highlights": [
         "ChefBot AI assistant powered by Google Gemini API",
         "Smart pantry with recipe suggestions from stock",
@@ -93,9 +119,121 @@
         "live": "https://vellum-frontend-three.vercel.app",
         "github": "https://github.com/ZinMinHtet22/final_Year_Project"
       },
-      "image": "/projects/vellum.png",
+      "image": "/projects/vellum.webp",
       "featured": true,
-      "order": 1
+      "order": 1,
+      "year": "2024",
+      "proofLine": "Full-stack capstone with AI chef, analytics, and admin moderation.",
+      "status": "live"
+    },
+    {
+      "slug": "luxury-recipe-finder",
+      "title": "Luxury Recipe Finder",
+      "category": "Full-stack",
+      "summary": "Premium recipe discovery platform with curated collections and smart search.",
+      "problem": "Home cooks wanted a refined way to discover high-quality recipes without cluttered ads and noisy interfaces.",
+      "approach": "Built a Laravel API with React frontend, focusing on clean search, curated collections, and a calm reading experience for recipes.",
+      "result": "A polished full-stack product demonstrating API design, relational data modeling, and modern frontend architecture.",
+      "role": "Full-stack Developer",
+      "tech": [
+        "Laravel",
+        "React",
+        "MySQL",
+        "REST API"
+      ],
+      "highlights": [
+        "Smart search with filters and collections",
+        "RESTful API with authentication",
+        "Responsive, content-first UI"
+      ],
+      "links": {
+        "live": "",
+        "github": ""
+      },
+      "image": "/projects/luxury-recipe.webp",
+      "featured": true,
+      "order": 2,
+      "proofLine": "Curated recipe discovery with smart search and clean API.",
+      "status": "local"
+    },
+    {
+      "slug": "personal-finance",
+      "title": "Nexus — Personal Finance",
+      "category": "Full-stack",
+      "summary": "Local-first personal finance app with passkeys, budgets, an offline AI coach, and multi-currency tracking.",
+      "problem": "Personal finance apps often rely on passwords, cloud AI, and opaque data handling; many also lack practical tools like net-worth history, goals pacing, and safe backups.",
+      "approach": "Built a Laravel API (localhost:8001) with a React frontend (localhost:5174), using WebAuthn passkeys, local Ollama (llama3.2) for coaching, and USD/MMK support with a manual rate.",
+      "whatIBuilt": "Nexus: transactions, budgets with alerts, subscriptions/bills, an AI coach with data tools running on local Ollama llama3.2 (no API keys, fully local), Net Worth Tracker with daily history snapshots and charts, Savings Goals with pace tracking, CSV import with de-duplication, cash-flow forecast/safe-to-spend, debt payoff planner, backup/export plus monthly reports, true rollback restore (validate-first, timestamped pre-restore snapshot, atomic), USD/MMK multi-currency via a manual rate (1 USD = 2100 MMK) and a central CurrencyService, WebAuthn biometric login, and an emerald brand identity (replacing the original violet theme).",
+      "result": "A secure, production-style finance product combining modern passkey authentication, email OTP verification, role-based admin tools, and rich data visualizations.",
+      "outcome": "Fully local personal-finance system, verified by a full audit (17 routes, 33/33 API sweep, 25/25 CRUD) and php artisan test 10/10.",
+      "role": "Full-stack Developer",
+      "tech": [
+        "Laravel",
+        "React",
+        "TypeScript",
+        "WebAuthn",
+        "Tailwind CSS"
+      ],
+      "stack": [
+        "Laravel",
+        "React",
+        "TypeScript",
+        "WebAuthn",
+        "Tailwind CSS",
+        "Ollama (llama3.2)"
+      ],
+      "highlights": [
+        "Local Ollama (llama3.2) AI coach with data tools — no API keys, fully local",
+        "WebAuthn passkeys, Net Worth history snapshots/charts, Savings Goals with pace tracking",
+        "CSV import with de-duplication, cash-flow forecast/safe-to-spend, debt payoff planner, backup/export and monthly reports",
+        "True rollback restore (validate-first, pre-restore snapshot, atomic) and USD/MMK via manual rate + central CurrencyService (emerald UI)"
+      ],
+      "links": {
+        "live": "https://nexus-frontend-tau-three.vercel.app",
+        "github": "https://github.com/ZinMinHtet22/Personal-Finance-"
+      },
+      "image": "/projects/nexus.webp",
+      "featured": true,
+      "order": 3,
+      "challenges": [
+        "Backup restore was originally merge-only; rebuilt as a true rollback flow with validation and a timestamped pre-restore snapshot performed atomically.",
+        "A security audit found OTP verification could mint a session from email + OTP alone; rebuilt as password-bound, hashed, single-use, short-lived OTPs with a 5-attempt cap and sanitized API 5xx responses.",
+        "Multi-currency without exchange-rate APIs: used a manual rate (1 USD = 2100 MMK) with one central CurrencyService so every page reports consistently."
+      ],
+      "proofLine": "Security-audited · WebAuthn passkeys · local AI coach",
+      "status": "local"
+    },
+    {
+      "slug": "mise-en-box",
+      "title": "Mise en Box",
+      "category": "Frontend",
+      "summary": "Weekly meal-kit e-commerce platform with recipes, planner, cart, and a luxury dark mode.",
+      "problem": "Meal-kit customers juggle recipes, shopping lists, and pantry stock across disconnected sites, with no single place to plan the week or check out.",
+      "approach": "Built a React 19 + TypeScript SPA with Vite and React Router covering recipe discovery, weekly meal planner, gift boxes, pantry stock, and a slide-out cart backed by context state.",
+      "result": "A polished, fully responsive storefront demonstrating SPA architecture, state management, and premium dark-mode UI design.",
+      "role": "Frontend Developer",
+      "tech": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "React Router",
+        "Tailwind CSS"
+      ],
+      "highlights": [
+        "Recipe catalog with detail pages and curated collections",
+        "Weekly meal planner and cart drawer with context state",
+        "Product, pantry, gift box, and app-download pages",
+        "Luxury dark theme with responsive mobile nav"
+      ],
+      "links": {
+        "live": "",
+        "github": "https://github.com/ZinMinHtet22/mise-en-box"
+      },
+      "image": "/projects/mise-en-box.webp",
+      "featured": true,
+      "order": 4,
+      "proofLine": "Responsive meal-kit storefront with planner, cart, and dark mode.",
+      "status": "local"
     }
   ]
 }

@@ -13,6 +13,15 @@ export type Project = {
   image?: string;
   featured: boolean;
   order: number;
+  // Optional extended fields (case-study template)
+  whatIBuilt?: string;
+  challenges?: string[];
+  outcome?: string;
+  year?: string | number;
+  stack?: string[];
+  proofLine?: string;
+  status?: "live" | "local";
+  imagePosition?: string;
 };
 
 export type Testimonial = {

@@ -182,8 +182,42 @@ body {
   }
 }
 
-.ticker-track {
+.ticker-track,
+.sm2-track {
   animation: ticker 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.sm2-mask {
+  overflow: hidden;
+  position: relative;
+}
+
+.sm2-group {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.sm2-part {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sm2-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sm2-dot {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 /* Exit-confirm modal: slow float + blur on card hover */

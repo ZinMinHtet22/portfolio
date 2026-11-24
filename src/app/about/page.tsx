@@ -14,7 +14,7 @@ const education = [
   {
     degree: "BSc (Hons) Computer Science",
     school: "University of Roehampton (via Lithan Academy)",
-    years: "2024 – Present",
+    years: "2024 – 2025",
     detail: "Top-up degree through the eduCLaaS work-study pathway",
   },
   {
@@ -28,8 +28,8 @@ const education = [
 const experience = [
   {
     role: "Technology Associate",
-    company: "Lithan Academy Pte Ltd",
-    years: "2024 – Present",
+    company: "CLaaS2SaaS (Lithan Academy)",
+    years: "June 2026 – Present",
     bullets: [
       "Support IT operations across the Business Operations - IT department",
       "Troubleshot hardware, software, and network issues for end users",
@@ -48,15 +48,15 @@ const skills = {
 
 export default function AboutPage() {
   return (
-    <div className="px-5 pt-36 md:px-10 md:pt-44">
+    <div className="px-5 pt-28 sm:px-8 sm:pt-32 lg:px-12 lg:pt-36">
       <SectionHeading
         eyebrow="About"
-        title="Developer with a calm craft."
-        description="I build reliable, thoughtful software — with a background in technical support and an AI-augmented workflow that keeps quality high and iteration fast."
+        title="Building with calm precision."
+        description="I design and ship reliable, thoughtful software — blending product thinking, solid engineering, and an AI-augmented workflow to move fast without sacrificing craft."
       />
 
       {/* Story */}
-      <div className="grid max-w-4xl gap-8 text-base leading-relaxed text-white/60 md:grid-cols-2 md:text-lg">
+      <div className="grid max-w-4xl grid-cols-1 gap-6 text-base leading-relaxed text-white/60 md:grid-cols-2 md:text-lg lg:gap-8">
         <p>
           I&apos;m a full-stack developer who cares about clear interfaces,
           solid architecture, and products that feel quiet to use. My path into
@@ -71,11 +71,11 @@ export default function AboutPage() {
       </div>
 
       {/* Education */}
-      <section className="mt-28">
+      <section className="mt-14 sm:mt-20 lg:mt-28">
         <h2 className="text-xs uppercase tracking-widest text-white/40">
           Education
         </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
           {education.map((item) => (
             <Reveal key={item.degree}>
               <div className="h-full rounded-3xl border border-border bg-surface p-7">
@@ -93,7 +93,7 @@ export default function AboutPage() {
       </section>
 
       {/* Experience */}
-      <section className="mt-28">
+      <section className="mt-14 sm:mt-20 lg:mt-28">
         <h2 className="text-xs uppercase tracking-widest text-white/40">
           Experience
         </h2>
@@ -127,7 +127,7 @@ export default function AboutPage() {
       </section>
 
       {/* AI Workflow highlight */}
-      <section className="mt-28">
+      <section className="mt-14 sm:mt-20 lg:mt-28">
         <div className="rounded-3xl bg-white/5 p-8 backdrop-blur-[5px] md:p-12">
           <p className="text-xs uppercase tracking-widest text-accent">
             AI-Augmented Development Workflow
@@ -135,7 +135,7 @@ export default function AboutPage() {
           <h3 className="display mt-4 max-w-2xl text-[32px] text-white md:text-[44px]">
             Shipping faster with intentional AI tooling
           </h3>
-          <div className="mt-8 grid gap-6 text-sm leading-relaxed text-white/60 md:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 text-sm leading-relaxed text-white/60 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             <p>
               I use <span className="font-medium text-white">Claude</span>{" "}
               daily for architecture discussions, refactors, code review, and
@@ -158,11 +158,11 @@ export default function AboutPage() {
       </section>
 
       {/* Skills */}
-      <section className="mt-28">
+      <section className="mt-14 sm:mt-20 lg:mt-28">
         <h2 className="text-xs uppercase tracking-widest text-white/40">
           Skills
         </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {Object.entries(skills).map(([group, items]) => (
             <div
               key={group}
@@ -179,7 +179,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="mt-28 flex flex-wrap gap-4">
+      <div className="mt-14 flex flex-wrap gap-4 sm:mt-20 lg:mt-28">
         <Link
           href="/resume"
           className="inline-flex h-12 items-center rounded-[20px] border border-white/10 bg-white/5 px-[18px] text-[15px] font-medium tracking-[-0.03em] text-white backdrop-blur-[5px] transition-colors duration-200 hover:bg-white/10"

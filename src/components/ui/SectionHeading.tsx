@@ -17,7 +17,7 @@ export function SectionHeading({
   muted = true,
 }: Props) {
   return (
-    <div className={cn("mb-14 max-w-[900px]", className)}>
+    <div className={cn("mb-10 max-w-[900px] sm:mb-14 lg:mb-20", className)}>
       {eyebrow ? (
         <p className="mb-6 text-sm text-white/40">{eyebrow}</p>
       ) : null}

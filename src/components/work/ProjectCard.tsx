@@ -1,86 +1,121 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Tag } from "@/components/ui/Tag";
+import GlareHover from "@/components/react-bits/GlareHover";
 import type { Project } from "@/lib/data";
 
-const gradients: Record<string, string> = {
-  "final-year-project":
-    "linear-gradient(135deg, #f97316 0%, #ec4899 55%, #8b5cf6 100%)",
-  "luxury-recipe-finder":
-    "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #a855f7 100%)",
-  "personal-finance":
-    "linear-gradient(135deg, #059669 0%, #0891b2 55%, #1d4ed8 100%)",
-  "mise-en-box":
-    "linear-gradient(135deg, #ea580c 0%, #b45309 55%, #1c1917 100%)",
+type Props = {
+  project: Project;
+  featured?: boolean;
+  className?: string;
 };
 
-const fallback =
-  "linear-gradient(135deg, #0099ff 0%, #0369a1 55%, #1e293b 100%)";
+export function ProjectCard({ project, featured = false, className }: Props) {
+  const stack = project.stack?.length ? project.stack : project.tech;
+  const shown = stack.slice(0, stack.length > 4 ? 3 : 4);
+  const hidden = stack.length - shown.length;
+  const chips = hidden > 0 ? [...shown, `+${hidden} more`] : shown;
 
-export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Link href={`/work/${project.slug}`} className="group block">
-      <div className="relative aspect-[1/0.9875] overflow-hidden rounded-3xl">
-        <div
-          aria-hidden
-          className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-          style={{
-            backgroundImage: gradients[project.slug] ?? fallback,
-          }}
-        />
+    <Link
+      href={`/work/${project.slug}`}
+      className={cn(
+        "group flex h-full flex-col rounded-3xl border border-border bg-surface p-6 transition-colors duration-200",
+        "hover:border-white/15 motion-reduce:transition-none",
+        featured && "lg:col-span-2",
+        className,
+      )}
+    >
+      <div className="flex flex-1 flex-col gap-5 sm:gap-6">
+        <GlareHover
+          width="100%"
+          height="100%"
+          background="transparent"
+          borderColor="rgba(255,255,255,0.07)"
+          borderRadius="20px"
+          glareColor="#0099ff"
+          glareOpacity={0.12}
+          glareSize={35}
+          glareAngle={-30}
+          variant="streak"
+          mode="hover"
+          className="relative aspect-[16/10] w-full overflow-hidden"
+        >
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes={
+                featured
+                  ? "(min-width: 1024px) 66vw, (min-width: 640px) 100vw, 100vw"
+                  : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              }
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none"
+              style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
+            />
+          ) : (
+            <div aria-hidden className="h-full w-full bg-[#080808]" />
+          )}
+        </GlareHover>
 
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover brightness-105 saturate-[1.05] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-          />
-        ) : null}
+        <div className="flex flex-1 flex-col gap-4 sm:gap-5">
+          <div className="flex items-center justify-between gap-3 text-xs tracking-wider">
+            <span className="text-white/50">
+              {project.category}
+              {project.year ? (
+                <>
+                  <span className="mx-1.5 opacity-40" aria-hidden>
+                    ·
+                  </span>
+                  {project.year}
+                </>
+              ) : null}
+            </span>
+            {project.status ? (
+              <span className="inline-flex shrink-0 items-center rounded-full border border-white/10 bg-transparent px-2.5 py-1 text-[11px] font-medium text-white/70">
+                {project.status === "live" ? "● Live" : "Local system"}
+              </span>
+            ) : null}
+          </div>
 
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-black/30 to-black/75"
-        />
+          <h3 className="line-clamp-2 min-h-[2.75em] text-2xl font-semibold leading-snug tracking-tight text-white sm:text-[28px]">
+            {project.title}
+          </h3>
 
-        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-          {project.tech.slice(0, 2).map((t) => (
-            <Tag
-              key={t}
-              className="border border-white/30 bg-black/55 px-3 py-1.5 text-xs font-semibold text-white shadow-sm backdrop-blur-md"
-            >
-              {t}
-            </Tag>
-          ))}
-        </div>
+          <p className="line-clamp-2 min-h-[3.25em] text-sm leading-relaxed text-white/50 sm:text-[15px]">
+            {project.summary}
+          </p>
 
-        <div className="absolute inset-x-0 bottom-0 p-5">
-          <div className="flex items-end justify-between gap-3">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-[0.08em] text-white/75">
-                {project.category}
-              </p>
-              <h3 className="mt-1 text-xl font-medium tracking-[-0.03em] text-white md:text-2xl">
-                {project.title}
-              </h3>
-            </div>
-            <span
-              className={cn(
-                "shrink-0 translate-x-3 text-sm text-white/0 transition-all duration-300",
-                "group-hover:translate-x-0 group-hover:text-white",
-              )}
-            >
-              View case →
+          {project.proofLine ? (
+            <p className="h-5 truncate text-sm font-semibold tracking-tight text-accent">
+              {project.proofLine}
+            </p>
+          ) : null}
+
+          <div className="grid grid-cols-4 gap-2 pt-1">
+            {chips.map((chip) => (
+              <span
+                key={chip}
+                className="truncate rounded-md border border-white/[0.06] bg-[#161616] px-2 py-1.5 text-center text-xs text-white/70"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-auto border-t border-white/[0.06] pt-2">
+            <span className="inline-flex items-center gap-1.5 text-sm font-medium text-white/80 transition-colors duration-150 group-hover:text-white motion-reduce:transition-none">
+              View case study
+              <span className="transition-transform duration-150 group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none">
+                →
+              </span>
             </span>
           </div>
         </div>
       </div>
-
-      <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-white/50">
-        {project.summary}
-      </p>
     </Link>
   );
 }

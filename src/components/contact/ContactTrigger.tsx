@@ -7,17 +7,24 @@ type Props = {
   children?: ReactNode;
   className?: string;
   variant?: "pill" | "plain";
+  /** Which panel mode to open. Default: keep the panel's current mode. */
+  mode?: "message" | "intake";
 };
 
 export function ContactTrigger({
   children = "Get in touch",
   className,
   variant = "pill",
+  mode,
 }: Props) {
   return (
     <button
       type="button"
-      onClick={() => window.dispatchEvent(new CustomEvent("open-contact"))}
+      onClick={() =>
+        window.dispatchEvent(
+          new CustomEvent("open-contact", { detail: mode ? { mode } : undefined }),
+        )
+      }
       className={cn(
         variant === "pill"
           ? "inline-flex h-11 items-center rounded-[20px] bg-white px-5 text-[15px] font-medium tracking-[-0.03em] text-[#030303] transition-transform duration-200 hover:scale-[1.03]"
